@@ -89,7 +89,7 @@ class NotionAssignDailyTask:
         assigned_tasks = []
 
         for task in tasks.values():
-            if task["start"] > datetime.datetime.now().astimezone(
+            if task["start"] is not None and task["start"] > datetime.datetime.now().astimezone(
                     datetime.timezone(datetime.timedelta(hours=9))) + datetime.timedelta(days=1):
                 continue
             if task["depth"] > project_max_depth[task["project_id"]]:
